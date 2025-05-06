@@ -1,1 +1,97 @@
-hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justin's Retro Site</title>
+  <link rel="stylesheet" href="https://unpkg.com/98.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <style>
+    body {
+      background-color: teal;
+      font-family: "Tahoma", sans-serif;
+      margin: 2rem;
+    }
+
+    .window {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    a {
+      color: navy;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Window -->
+  <div class="window">
+    <div class="title-bar">
+      <div class="title-bar-text">Welcome.exe</div>
+    </div>
+    <div class="window-body">
+      <p>Hello, world! 👋</p>
+      <p>This is a placeholder for Justin's 90s-style homepage.</p>
+
+      <ul>
+        <li><a href="/blog/index.html">📝 Blog</a></li>
+        <li><a href="#">📂 Projects (Coming soon)</a></li>
+        <li><a href="#">📫 Contact (Maybe?)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Taskbar -->
+  <nav class="taskbar">
+    <button class="start-button" aria-label="Open Start Menu" aria-expanded="false">Start</button>
+    <span class="taskbar-label">JustinOS</span>
+  </nav>
+
+  <!-- Start Menu -->
+  <nav class="start-menu" role="menu" aria-hidden="true">
+    <ul>
+      <li role="menuitem"><a href="/">🏠 Home</a></li>
+      <li role="menuitem"><a href="/blog/index.html">📝 Blog</a></li>
+      <li role="menuitem"><a href="#">📂 Projects</a></li>
+      <li role="menuitem"><a href="#">📜 About</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    const startButton = document.querySelector('.start-button');
+    const startMenu = document.querySelector('.start-menu');
+
+    // Toggle Start Menu visibility
+    startButton.addEventListener('click', () => {
+      const isExpanded = startButton.getAttribute('aria-expanded') === 'true';
+      startButton.setAttribute('aria-expanded', !isExpanded);
+      startMenu.setAttribute('aria-hidden', isExpanded);
+      startMenu.style.display = isExpanded ? 'none' : 'block';
+    });
+
+    // Close Start Menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!startButton.contains(e.target) && !startMenu.contains(e.target)) {
+        startButton.setAttribute('aria-expanded', 'false');
+        startMenu.setAttribute('aria-hidden', 'true');
+        startMenu.style.display = 'none';
+      }
+    });
+
+    // Add keyboard accessibility for Start Button
+    startButton.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        startButton.click();
+      }
+    });
+  </script>
+
+</body>
+</html>

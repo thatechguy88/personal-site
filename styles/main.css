@@ -1,0 +1,87 @@
+/* General Styles */
+body {
+    margin: 0;
+    background: #008080;
+    font-family: "Tahoma", sans-serif;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Desktop Layout */
+.desktop {
+    padding: 1rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Icon Styles */
+.icon {
+    text-align: center;
+    color: white;
+}
+
+.icon a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Taskbar */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 32px;
+    background: silver;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid white;
+    padding: 0 8px;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.start-button {
+    font-family: "Tahoma", sans-serif;
+    padding: 2px 10px;
+}
+
+.taskbar-label {
+    margin-left: 12px;
+}
+
+/* Start Menu */
+.start-menu {
+    position: fixed;
+    bottom: 32px;
+    left: 8px;
+    width: 200px;
+    background: silver;
+    border: 2px outset white;
+    display: none; /* Toggle visibility dynamically */
+    z-index: 101;
+    padding: 0;
+}
+
+.start-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.start-menu li {
+    padding: 8px;
+    border-bottom: 1px solid gray;
+}
+
+.start-menu li a {
+    color: black;
+    text-decoration: none;
+}
+
+/* Accessibility Enhancements */
+.icon a:focus,
+.start-menu li a:focus {
+    outline: 2px solid yellow;
+}
