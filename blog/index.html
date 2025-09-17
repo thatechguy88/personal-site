@@ -6,30 +6,8 @@
   <title>Justin's Blog</title>
   <link rel="stylesheet" href="https://unpkg.com/98.css">
   <link rel="stylesheet" href="/styles/main.css">
-  <style>
-    body {
-      background-color: teal;
-      font-family: "Tahoma", sans-serif;
-      margin: 2rem;
-    }
-
-    .window {
-      max-width: 600px;
-      margin: auto;
-    }
-
-    a {
-      color: navy;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
 </head>
 <body>
-
   <!-- Blog Window -->
   <div class="window">
     <div class="title-bar">
@@ -43,7 +21,6 @@
         <li><a href="post1.html">📄 My First Blog Post</a></li>
         <li><a href="post2.html">📄 Another Day, Another Post</a></li>
         <li><a href="post3.html">📄 Exploring Retro Web Design</a></li>
-        <!-- Add more blog posts here -->
       </ul>
     </div>
   </div>
@@ -59,40 +36,11 @@
     <ul>
       <li role="menuitem"><a href="/">🏠 Home</a></li>
       <li role="menuitem"><a href="/blog/index.html">📝 Blog</a></li>
-      <li role="menuitem"><a href="#">📂 Projects</a></li>
-      <li role="menuitem"><a href="#">📜 About</a></li>
+      <li role="menuitem"><span class="menu-link-disabled" aria-disabled="true">📂 Projects</span></li>
+      <li role="menuitem"><span class="menu-link-disabled" aria-disabled="true">📜 About</span></li>
     </ul>
   </nav>
 
-  <script>
-    const startButton = document.querySelector('.start-button');
-    const startMenu = document.querySelector('.start-menu');
-
-    // Toggle Start Menu visibility
-    startButton.addEventListener('click', () => {
-      const isExpanded = startButton.getAttribute('aria-expanded') === 'true';
-      startButton.setAttribute('aria-expanded', !isExpanded);
-      startMenu.setAttribute('aria-hidden', isExpanded);
-      startMenu.style.display = isExpanded ? 'none' : 'block';
-    });
-
-    // Close Start Menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!startButton.contains(e.target) && !startMenu.contains(e.target)) {
-        startButton.setAttribute('aria-expanded', 'false');
-        startMenu.setAttribute('aria-hidden', 'true');
-        startMenu.style.display = 'none';
-      }
-    });
-
-    // Add keyboard accessibility for Start Button
-    startButton.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        startButton.click();
-      }
-    });
-  </script>
-
+  <script src="/scripts/start-menu.js" defer></script>
 </body>
 </html>

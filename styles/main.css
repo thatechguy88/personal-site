@@ -1,29 +1,32 @@
-/* General Styles */
+/* Base layout */
 body {
-    margin: 0;
+    margin: 2rem;
     background: #008080;
     font-family: "Tahoma", sans-serif;
-    height: 100vh;
-    overflow: hidden;
+    color: black;
+    min-height: 100vh;
+    padding-bottom: 48px; /* keep content clear of taskbar */
 }
 
-/* Desktop Layout */
-.desktop {
-    padding: 1rem;
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-/* Icon Styles */
-.icon {
-    text-align: center;
-    color: white;
-}
-
-.icon a {
-    color: white;
+a {
+    color: navy;
     text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+    text-decoration: underline;
+}
+
+.placeholder-link {
+    color: rgba(255, 255, 255, 0.8);
+    cursor: not-allowed;
+}
+
+/* Window styling */
+.window {
+    max-width: 600px;
+    margin: 0 auto 3rem;
 }
 
 /* Taskbar */
@@ -51,7 +54,7 @@ body {
     margin-left: 12px;
 }
 
-/* Start Menu */
+/* Start menu */
 .start-menu {
     position: fixed;
     bottom: 32px;
@@ -59,9 +62,12 @@ body {
     width: 200px;
     background: silver;
     border: 2px outset white;
-    display: none; /* Toggle visibility dynamically */
     z-index: 101;
     padding: 0;
+}
+
+.start-menu[aria-hidden="true"] {
+    display: none;
 }
 
 .start-menu ul {
@@ -75,13 +81,24 @@ body {
     border-bottom: 1px solid gray;
 }
 
-.start-menu li a {
-    color: black;
-    text-decoration: none;
+.start-menu li:last-child {
+    border-bottom: none;
 }
 
-/* Accessibility Enhancements */
-.icon a:focus,
-.start-menu li a:focus {
+.start-menu a,
+.menu-link-disabled {
+    color: black;
+    display: block;
+}
+
+.menu-link-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Accessibility enhancements */
+.start-button:focus-visible,
+.start-menu a:focus-visible {
     outline: 2px solid yellow;
+    outline-offset: 2px;
 }
